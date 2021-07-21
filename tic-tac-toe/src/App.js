@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="app">
       <h1>TIC TAC TOE</h1>
-      <Board />
+      <Board board={board} handleSquareClick={handleSquareClick}/>
     </div>
   );
 }
