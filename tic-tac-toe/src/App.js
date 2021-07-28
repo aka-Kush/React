@@ -35,6 +35,7 @@ function App() {
       
         return prevState.concat({ board: newBoard, isXNext: !last.isXNext });
     });
+    
     setCurrentMove(prevState => prevState + 1);
   }
 
