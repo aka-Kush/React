@@ -1,20 +1,22 @@
 import React, { useState } from 'react'
 import MainPageLayout from '../components/MainPageLayout'
+import { apiGet } from '../misc/config';
 
 const Home = () => {
 
     const [input, setInput] = useState('');
+    const [results, setResults] = useState(null);
 
     const onInputChange = (event) => {
         setInput(event.target.value);
     }
 
     const onSearch = () => {
-        // https://www.tvmaze.com/api
-        fetch(`https://api.tvmaze.com/search/shows?q=${input}`)
-            .then(res => res.json())
-            .then(data => console.log(data))
-    }
+        apiGet(`/search/shows?q=${input}`)
+            .then(result => {
+                setResults(result);
+            })
+    };
 
     const onKeyDown = (event) => {
         if (event.keyCode === 13) {
@@ -22,10 +24,27 @@ const Home = () => {
         };
     }
 
+    const renderResults = () => {
+        if (results && results.length === 0) {
+            return <div>No Results</div>
+        };
+        if (results && results.length > 0) {
+            return (
+                <div>
+                    {results.map((item) => (
+                        <div key={item.show.id}> {item.show.name} </div>
+                    ))};
+                </div>
+            );
+        };
+        return null;
+    }
+
     return (
         <MainPageLayout>
             <input type="text" onChange={onInputChange} onKeyDown={onKeyDown} value={input} />
             <button type="button" onClick={onSearch}>Search</button>
+            {renderResults()}
         </MainPageLayout>
     )
 }
