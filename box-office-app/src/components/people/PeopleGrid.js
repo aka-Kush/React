@@ -1,10 +1,11 @@
 import React from 'react'
 import PeopleCard from './PeopleCard'
 import IMG_NOT_FOUND from '../../images/not-found.png'
+import { FlexGrid } from '../Styled'
 
 const PeopleGrid = ({data}) => {
     return (
-        <div>
+        <FlexGrid>
             {data.map(({ person }) =>
                 <PeopleCard
                     key={person.id}
@@ -16,7 +17,7 @@ const PeopleGrid = ({data}) => {
                     image={person.image ? person.image.medium : IMG_NOT_FOUND}
                 />
             )};
-        </div>
+        </FlexGrid>
     )
 }
 
