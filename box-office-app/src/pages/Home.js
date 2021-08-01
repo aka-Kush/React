@@ -31,7 +31,6 @@ const Home = () => {
     const onRadioChange = (event) => {
         setSearchOption(event.target.value);
     }
-    console.log(searchOption);
 
     const renderResults = () => {
         if (results && results.length === 0) {
@@ -39,9 +38,7 @@ const Home = () => {
         };
         if (results && results.length > 0) {
             return results[0].show
-                // ? results.map((item) => (<div key={item.show.id}> {item.show.name} </div>))
                 ? <ShowGrid data={results}/>
-                // : results.map((item) => (<div key={item.person.id}> {item.person.name} </div>))
                 : <PeopleGrid data={results}/>
         }
         return null;
