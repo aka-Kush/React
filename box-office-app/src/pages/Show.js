@@ -87,7 +87,7 @@ const Show = () => {
 
             <InfoBlock>
                 <h2>Seasons</h2>
-                <Seasons seasons={show. _embedded.seasons}/>
+                <Seasons seasons={show._embedded.seasons}/>
             </InfoBlock>
 
             <InfoBlock>
