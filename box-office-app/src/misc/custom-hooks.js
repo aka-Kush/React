@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 
 function showsReducer(prevState, action) {
     switch (action.type) {
